@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     int opt; 
 
     char* dic = NULL;
+    char* input_file = NULL;
 
     int *parameters = (int*) malloc(7 * sizeof(int)); //Array to check if all parameters were specified
 
@@ -35,9 +36,9 @@ int main(int argc, char *argv[])
                 printf("Help\n");  
                 break;  
             case 'i':  
-                char* input = (char*) malloc(strlen(optarg));
-                strcpy(input,optarg);
-                printf("Input: %s\n", input);
+                input_file = (char*) malloc(strlen(optarg));
+                strcpy(input_file,optarg);
+                printf("Input: %s\n", input_file);
                 parameters[1]=1;
                 break;
             case 'd':  
@@ -73,7 +74,11 @@ int main(int argc, char *argv[])
         }  
     }  
 
+    int count = 0;
+
     handle_dic(parameters[2], dic);
+    char** input = handle_input(parameters[1], input_file, &count);
+    printinput(input, count);
       
     return 0; 
 } 

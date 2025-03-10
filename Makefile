@@ -1,2 +1,2 @@
 all:
-	gcc ortografia.c -o ortografia
+	gcc ortografia.c -o ortografia -g
